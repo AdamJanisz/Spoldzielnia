@@ -11,7 +11,10 @@
         <put-attribute name="body" value="" />
 
     </definition>
- 
+
+    <definition name="appUser" extends="base.definition">
+        <put-attribute name="body" value="/appUser.jsp" />
+    </definition>
 
     <definition name="hello" extends="base.definition">
         <put-attribute name="body" value="/hello.jsp" />
