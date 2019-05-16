@@ -1,7 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 
@@ -25,39 +26,65 @@
                     <div class="content">
 
 
-                        <form method="post" action="/addAppUser" class="container">
-
+                        <form:form method="post" action="addAppUser.html" modelAttribute="appUser">
                             <table>
-
                                 <tr>
-                                    <td><label path="firstName"><b><spring:message code="label.firstName"/></b></label>
-                                    </td>
-                                    <td><input name="firstName"/></td>
+                                    <td><form:hidden path="id"/>
                                 </tr>
                                 <tr>
-                                    <td><label path="lastName"><b><spring:message code="label.lastName"/></b></label>
-                                    </td>
-                                    <td><input name="lastName"/></td>
+                                    <td><form:label path="firstName"><spring:message code="label.firstName"/></form:label></td>
+                                    <td><form:input path="firstName" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label path="email"><b><spring:message code="label.email"/></b></label></td>
-                                    <td><input name="email"/></td>
+                                    <td><form:label path="lastName"><spring:message code="label.lastName"/></form:label></td>
+                                    <td><form:input path="lastName" /></td>
                                 </tr>
                                 <tr>
-                                    <td><label path="telephone"><b><spring:message code="label.telephone"/></b></label>
-                                    </td>
-                                    <td><input name="telephone"/></td>
+                                    <td><form:label path="email"><spring:message code="label.email"/></form:label></td>
+                                    <td><form:input path="email" /></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="telephone"><spring:message code="label.telephone"/></form:label></td>
+                                    <td><form:input path="telephone" /></td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
-                                        <button type="submit" class="btn">Confirm</button>
+                                        <c:if test="${appUser.id==0}">
+                                            <input type="submit" value="<spring:message code="label.addAppUser"/>"/>
+                                        </c:if>
+                                        <c:if test="${appUser.id!=0}">
+                                            <input type="submit" value="<spring:message code="label.editAppUser"/>"/>
+                                        </c:if>
                                     </td>
                                 </tr>
-
                             </table>
 
+                            <h3><spring:message code="label.userList"/></h3>
+                            <c:if  test="${!empty appUserList}">
+                                <table class="data">
+                                    <tr>
+                                        <th><spring:message code="label.firstName"/></th>
+                                        <th><spring:message code="label.lastName"/></th>
+                                        <th><spring:message code="label.email"/></th>
+                                        <th><spring:message code="label.telephone"/></th>
+                                        <th>&nbsp;</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                    <c:forEach items="${appUserList}" var="appUser">
+                                        <tr>
+                                            <td>${appUser.firstName} </td>
+                                            <td>${appUser.lastName} </td>
+                                            <td>${appUser.email}</td>
+                                            <td>${appUser.telephone}</td>
+                                            <td><a href="delete/${appUser.id}.html">delete</a></td>
+                                            <td><a href="appUsers.html?appUserId=${appUser.id}">edit</a></td>
+                                        </tr>
+                                    </c:forEach>
+                                </table>
+                            </c:if>
 
-                        </form>
+                        </form:form>
+
                     </div>
                 </div>
             </div>
@@ -67,8 +94,3 @@
 </div>
 </body>
 </html>
-
-<body>
-
-
-

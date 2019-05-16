@@ -8,7 +8,7 @@
 
 
 		<a href="/" class="active"><spring:message code="label.home"/></a>
-	<a href="/appUsers.html"><spring:message code="label.addAppUser"/></a>
+	<a href="/appUsers.html">Login</a>
 	<a href="#contact">Contact</a>
 	<a href="/#about">About</a>
 	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
