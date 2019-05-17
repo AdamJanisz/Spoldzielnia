@@ -44,6 +44,32 @@ body, html {
 .topnav .icon {
     display: none;
 }
+.error{
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #af0e00;
+    background-color: #8f6e74;
+    border-color: #bce8f1;
+}
+.msg{
+    padding: 20px;
+
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #0012af;
+    background-color: #31708f;
+    border-color: #bce8f1;
+}
+
+.login-box{
+    width: 300px;
+    padding: 20px;
+    margin: 10px auto;
+
+}
 
 @media screen and (max-width: 600px) {
     .topnav a:not(:first-child) {display: none;}

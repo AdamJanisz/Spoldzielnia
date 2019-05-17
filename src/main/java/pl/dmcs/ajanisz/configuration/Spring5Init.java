@@ -10,7 +10,7 @@ import javax.servlet.Filter;
 public class Spring5Init extends AbstractAnnotationConfigDispatcherServletInitializer {
 
     protected Class<?>[] getRootConfigClasses() {
-        return new Class[]{Spring5Config.class,HibernatePersistenceConfiguration.class};
+        return new Class[]{SecurityConfiguration.class,Spring5Config.class,HibernatePersistenceConfiguration.class};
     }
 
     protected Class<?>[] getServletConfigClasses() {
