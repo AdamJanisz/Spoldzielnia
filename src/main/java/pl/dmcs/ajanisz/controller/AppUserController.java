@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import pl.dmcs.ajanisz.domain.AppUser;
+import pl.dmcs.ajanisz.service.AppUserRoleService;
 import pl.dmcs.ajanisz.service.AppUserService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,9 @@ public class AppUserController {
 
     @Autowired
     AppUserService appUserService;
+
+    @Autowired
+    AppUserRoleService appUserRoleService;
 
     @RequestMapping(value = "/appUsers")
     public String showAppUsers(Model model, HttpServletRequest request) {
@@ -32,8 +36,11 @@ public class AppUserController {
             model.addAttribute("appUser", new AppUser());}
 
             model.addAttribute("appUserList", appUserService.listAppUser());
+            model.addAttribute("appUserRoleList",appUserRoleService.listAppUserRole());
+
 
         return "appUser";
+
     }
 
     @RequestMapping(value = "/addAppUser", method = RequestMethod.POST)

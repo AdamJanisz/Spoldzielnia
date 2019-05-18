@@ -16,8 +16,6 @@
 
 <body>
 
-<div class="bg-img">
-
     <div class="content">
 
         <div class="img-circular">
@@ -30,6 +28,18 @@
                             <table>
                                 <tr>
                                     <td><form:hidden path="id"/>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="login"><spring:message code="label.login"/></form:label></td>
+                                    <td><form:input path="login" /></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="password"><spring:message code="label.password"/></form:label></td>
+                                    <td><form:input type="password"  path="password" /></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="enabled"><spring:message code="label.enabled"/></form:label></td>
+                                    <td><form:checkbox path="enabled" /></td>
                                 </tr>
                                 <tr>
                                     <td><form:label path="firstName"><spring:message code="label.firstName"/></form:label></td>
@@ -46,6 +56,12 @@
                                 <tr>
                                     <td><form:label path="telephone"><spring:message code="label.telephone"/></form:label></td>
                                     <td><form:input path="telephone" /></td>
+                                </tr>
+                                <tr>
+                                    <td><form:label path="appUserRole"><spring:message code="label.role" /></form:label> </td>
+                                    <td><form:select path="appUserRole" multiple="true">
+                                        <form:options items="${appUserRoleList}" itemValue="id" itemLabel="role"/>
+                                    </form:select> </td>
                                 </tr>
                                 <tr>
                                     <td colspan="2">
@@ -91,6 +107,6 @@
         </div>
     </div>
 
-</div>
+
 </body>
 </html>

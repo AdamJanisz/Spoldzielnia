@@ -6,12 +6,16 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.format.FormatterRegistry;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import pl.dmcs.ajanisz.utils.AppUserRoleConverter;
+import pl.dmcs.ajanisz.utils.AppUserRoleListConverter;
 
 import java.util.Locale;
 
@@ -65,6 +69,22 @@ public class Spring5Config implements WebMvcConfigurer {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
         interceptor.setParamName("lang");
         registry.addInterceptor(interceptor);
+    }
+
+    @Override
+    public void addFormatters(FormatterRegistry formatterRegistry) {
+        formatterRegistry.addConverter(getMyUserRoleConverter());
+        formatterRegistry.addConverter(getMyUserRoleListConverter());
+    }
+
+    @Bean
+    public AppUserRoleListConverter getMyUserRoleListConverter() {
+        return new AppUserRoleListConverter();
+    }
+
+    @Bean
+    public AppUserRoleConverter getMyUserRoleConverter() {
+        return new AppUserRoleConverter();
     }
 
 }
