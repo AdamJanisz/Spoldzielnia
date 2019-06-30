@@ -8,6 +8,20 @@ body, html {
     margin: 0px;
 }
 
+.scroll{
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 20px;
+    width: 400px;
+    height: 500px;
+    background-color: black;
+    opacity: 0.7;
+    border: 1px solid black;
+    overflow: scroll;
+    scrollbar-darkshadow-color: black;
+
+}
+
 * {
     box-sizing: border-box;
 }

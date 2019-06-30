@@ -3,25 +3,34 @@ package pl.dmcs.ajanisz.domain;
 import javax.persistence.*;
 import java.util.List;
 
+@Table(name="address",uniqueConstraints = {@UniqueConstraint(columnNames = { "city", "street","buildingNumber" } )})
 @Entity
-@Table(name="address")
-public class Spoldzielnia {
+public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    long id;
+
     private String city;
     private String street;
-    private String apartmentNumber;
-    @OneToMany(mappedBy = "address",fetch = FetchType.EAGER)
-    //@JoinTable(name="appuser_address",joinColumns = @JoinColumn(name="appuser_id"), inverseJoinColumns = @JoinColumn(name="address_id"))
-    private List<AppUser> appUserList;
+    private String buildingNumber;
 
-    public int getId() {
+//    @OneToMany(mappedBy = "address",fetch = FetchType.EAGER)
+//    private List<AppUser> appUserList;
+
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "appartmentAddress")
+    private List<Appartment> appartmentList;
+
+
+    public List<Appartment> getAppartmentList() { return appartmentList; }
+
+    public void setAppartmentList(List<Appartment> appartmentList) { this.appartmentList = appartmentList; }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -41,19 +50,19 @@ public class Spoldzielnia {
         this.street = street;
     }
 
-    public String getApartmentNumber() {
-        return apartmentNumber;
+//    public List<AppUser> getAppUserList() {
+//        return appUserList;
+//    }
+//
+//    public void setAppUserList(List<AppUser> appUserList) {
+//        this.appUserList = appUserList;
+//    }
+
+    public String getBuildingNumber() {
+        return buildingNumber;
     }
 
-    public void setApartmentNumber(String apartmentNumber) {
-        this.apartmentNumber = apartmentNumber;
-    }
-
-    public List<AppUser> getAppUserList() {
-        return appUserList;
-    }
-
-    public void setAppUserList(List<AppUser> appUserList) {
-        this.appUserList = appUserList;
+    public void setBuildingNumber(String buildingNumber) {
+        this.buildingNumber = buildingNumber;
     }
 }

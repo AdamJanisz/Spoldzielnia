@@ -30,4 +30,13 @@
             <put-attribute name="title" value="AppUserRole"/>
     <put-attribute name="body" value="/views/appUserRole.jsp"/>
     </definition>
+    <definition name="buildingManagerPage" extends="base.definition">
+        <put-attribute name="body" value="/views/buildingManagerPage.jsp"/>
+    </definition>
+    <definition name="appartmentsManagerPage" extends="base.definition">
+        <put-attribute name="body" value="/views/appartmentsManagerPage.jsp"/>
+    </definition>
+    <definition name="operationNotAllowed" extends="base.definition">
+        <put-attribute name="body" value="/views/operationNotAllowed.jsp"/>
+    </definition>
 </tiles-definitions>

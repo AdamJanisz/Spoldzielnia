@@ -6,7 +6,27 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bd901481-aa21-4db8-b1a5-8d62096f2edd" name="Default Changelist" comment="" />
+    <list default="true" id="bd901481-aa21-4db8-b1a5-8d62096f2edd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/controller/AddressController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/dao/AddressRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/domain/Address.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/domain/Building.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/service/AddressService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/service/AddressServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../src/main/webapp/views/buildingManagerPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/configuration/SecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/configuration/SecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/controller/AppUserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/controller/AppUserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/domain/AppUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/java/pl/dmcs/ajanisz/domain/AppUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/resources/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/resources/css/custom.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_it.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_it.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_pl.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/resources/i18n/messages_pl.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/tilesConfiguration/tiles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/tilesConfiguration/tiles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/views/appUser.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/views/appUser.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../src/main/webapp/views/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../src/main/webapp/views/header.jsp" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,7 +40,7 @@
     <option name="delegatedBuild" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -59,27 +79,27 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="943" />
-    <option name="y" value="47" />
-    <option name="width" value="978" />
-    <option name="height" value="1039" />
+    <option name="x" value="940" />
+    <option name="y" value="45" />
+    <option name="width" value="980" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -253,17 +273,19 @@
       <updated>1557939158415</updated>
       <workItem from="1557939161250" duration="1425000" />
       <workItem from="1557941331911" duration="665000" />
+      <workItem from="1559141575624" duration="5000" />
+      <workItem from="1559422268111" duration="79000" />
+      <workItem from="1560955331682" duration="28000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2090000" />
+    <option name="totallyTimeSpent" value="2202000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12214765" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1261745" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -306,62 +328,15 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/Spring5Configuration.java" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1173">
-          <caret line="72" column="50" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/layout.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/header.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/tilesConfiguration/tiles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" selection-start-line="14" selection-end-line="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/hello.jsp">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/configuration/Spring5Configuration.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/configuration/Spring5Init.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="28" column="56" selection-start-line="28" selection-start-column="56" selection-end-line="28" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/controller/MenuController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/layout.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/header.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/resources/css/custom.css" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/tilesConfiguration/tiles.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/hello.jsp" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/configuration/Spring5Configuration.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/configuration/Spring5Init.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/pl/dmcs/ajanisz/controller/MenuController.java" />
   </component>
   <component name="masterDetails">
     <states>

@@ -2,6 +2,7 @@ package pl.dmcs.ajanisz.domain;
 
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +21,18 @@ public class AppUser {
     private String lastName;
     private String email;
     private String telephone;
+
+   // @ManyToOne
+   // private Address address;
+   // private Building building;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private Bills bills;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Appartment appartment;
+
+
 @ManyToMany(fetch = FetchType.EAGER)
 private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
     public Set<AppUserRole> getAppUserRole() {
@@ -31,7 +44,9 @@ private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
 
     private String password;
 
+    public Appartment getAppartment() { return appartment; }
 
+    public void setAppartment(Appartment appartment) { this.appartment = appartment; }
 
     public void setAppUserRole(Set<AppUserRole> appUserRole) {
         this.appUserRole = appUserRole;
@@ -100,5 +115,20 @@ private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
+
+//    public Address getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(Address address) {
+//        this.address = address;
+//    }
+
+    public Bills getBills() {return bills; }
+
+    public void setBills(Bills bills) { this.bills = bills; }
+
+
+
 }
 

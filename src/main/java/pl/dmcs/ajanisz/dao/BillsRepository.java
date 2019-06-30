@@ -2,15 +2,14 @@ package pl.dmcs.ajanisz.dao;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import pl.dmcs.ajanisz.domain.Address;
+import pl.dmcs.ajanisz.domain.Bills;
 
 import javax.transaction.Transactional;
 
 @Transactional
 @Repository
-public interface AddressRepository extends JpaRepository<Address,Long> {
+public interface BillsRepository extends JpaRepository<Bills,Long> {
 
-        Address findById(long id);
-
+    Bills findBy(long id);
 
 }

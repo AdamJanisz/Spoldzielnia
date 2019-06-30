@@ -1,10 +1,9 @@
-package pl.dmcs.rkotas.utils;
+package pl.dmcs.ajanisz.utils;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.converter.Converter;
-
-import pl.dmcs.rkotas.domain.Address;
-import pl.dmcs.rkotas.service.AddressService;
+import pl.dmcs.ajanisz.domain.Address;
+import pl.dmcs.ajanisz.service.AddressService;
 
 public class AddressConverter implements Converter<String, Address> {
 
@@ -12,8 +11,8 @@ public class AddressConverter implements Converter<String, Address> {
 	AddressService addressService;
 	
 	@Override
-	public Address convert(String source) {
-		return addressService.getAddress(Integer.parseInt(source));
+	public Address convert(String s) {
+		return addressService.getAddress(Integer.parseInt(s));
 	}
 }
 

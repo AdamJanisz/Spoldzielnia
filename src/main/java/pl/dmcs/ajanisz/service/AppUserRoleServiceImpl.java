@@ -6,7 +6,9 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.dmcs.ajanisz.dao.AppUserRoleRepository;
 import pl.dmcs.ajanisz.domain.AppUserRole;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class AppUserRoleServiceImpl implements AppUserRoleService {
@@ -28,5 +30,12 @@ public class AppUserRoleServiceImpl implements AppUserRoleService {
     @Transactional
     public AppUserRole getAppUserRole(long id) {
         return appUserRoleRepository.getOne(id);
+    }
+
+    @Transactional
+    public Set<AppUserRole> getUserRole(String role) {
+        Set <AppUserRole> userRoleSet=new HashSet<AppUserRole>();
+        userRoleSet.add(appUserRoleRepository.findByRole(role));
+        return userRoleSet;
     }
 }
