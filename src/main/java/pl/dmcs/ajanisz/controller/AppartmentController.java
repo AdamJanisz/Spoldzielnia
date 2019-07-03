@@ -43,6 +43,7 @@ public class AppartmentController {
             return "appartmentsManagerPage";
         }
 
+
         @RequestMapping(value = "/addAppartment", method = RequestMethod.POST)
         public String addAppartment(@ModelAttribute("appartment") Appartment appartment, Model model)
         {

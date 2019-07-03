@@ -14,11 +14,9 @@ import org.springframework.web.servlet.i18n.CookieLocaleResolver;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import pl.dmcs.ajanisz.domain.AppUser;
 import pl.dmcs.ajanisz.domain.Appartment;
-import pl.dmcs.ajanisz.utils.AddressConverter;
-import pl.dmcs.ajanisz.utils.AppUserRoleConverter;
-import pl.dmcs.ajanisz.utils.AppUserRoleListConverter;
-import pl.dmcs.ajanisz.utils.AppartmentConverter;
+import pl.dmcs.ajanisz.utils.*;
 
 import java.util.Locale;
 
@@ -80,6 +78,7 @@ public class Spring5Config implements WebMvcConfigurer {
         formatterRegistry.addConverter(getMyUserRoleConverter());
         formatterRegistry.addConverter(getMyUserRoleListConverter());
         formatterRegistry.addConverter(getMyAppartmentConverter());
+        formatterRegistry.addConverter(getMyAppUserConverter());
     }
     @Bean
     public AddressConverter getMyAddressConverter() {
@@ -99,6 +98,11 @@ public class Spring5Config implements WebMvcConfigurer {
     @Bean
     public AppartmentConverter getMyAppartmentConverter() {
         return new AppartmentConverter();
+    }
+
+    @Bean
+    public AppUserConverter getMyAppUserConverter() {
+        return new AppUserConverter();
     }
 
 }

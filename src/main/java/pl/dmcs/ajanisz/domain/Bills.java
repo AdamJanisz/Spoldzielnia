@@ -1,5 +1,7 @@
 package pl.dmcs.ajanisz.domain;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,68 +12,87 @@ public class Bills {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    private String electricity;
-    private String hotWater;
-    private String coldWater;
-    private String sewage;
-    private String repairFund;
+    private boolean confirmed;
+    private int electricity;
+    private int hotWater;
+    private int coldWater;
+    private int sewage;
+    private int repairFund;
+    private int totalAmount;
+    //@DateTimeFormat
+    private String date;
 
-    @OneToOne
+    @ManyToOne
     private AppUser appUser;
+
+
+    public boolean isConfirmed() { return confirmed; }
+
+    public void setConfirmed(boolean confirmed) { this.confirmed = confirmed; }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public void setId(long id) { this.id = id; }
 
     public long getId() {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
+    public AppUser getAppUser() { return appUser; }
 
-    public String getElectricity() {
+    public void setAppUser(AppUser appUser) { this.appUser = appUser; }
+
+    public int getElectricity() {
         return electricity;
     }
 
-    public void setElectricity(String electricity) {
+    public void setElectricity(int electricity) {
         this.electricity = electricity;
     }
 
-    public String getHotWater() {
+    public int getHotWater() {
         return hotWater;
     }
 
-    public void setHotWater(String hotWater) {
+    public void setHotWater(int hotWater) {
         this.hotWater = hotWater;
     }
 
-    public String getColdWater() {
+    public int getColdWater() {
         return coldWater;
     }
 
-    public void setColdWater(String coldWater) {
+    public void setColdWater(int coldWater) {
         this.coldWater = coldWater;
     }
 
-    public String getSludge() {
+    public int getSewage() {
         return sewage;
     }
 
-    public void setSludge(String sewage) {
+    public void setSewage(int sewage) {
         this.sewage = sewage;
     }
 
-    public String getRepairFund() {
+    public int getRepairFund() {
         return repairFund;
     }
 
-    public void setRepairFund(String repairFund) {
+    public void setRepairFund(int repairFund) {
         this.repairFund = repairFund;
     }
 
-    public AppUser getAppUser() {
-        return appUser;
+    public int getTotalAmount() {
+        return totalAmount;
     }
 
-    public void setAppUser(AppUser appUser) {
-        this.appUser = appUser;
+    public void setTotalAmount(int totalAmount) {
+        this.totalAmount = totalAmount;
     }
 }

@@ -39,20 +39,15 @@ public class AddressController {
         @RequestMapping(value = "/addBuilding", method = RequestMethod.POST)
         public String addAddress(@ModelAttribute("address") Address address, BindingResult result)
         {
-            if (address.getId()==0)
+
                 addressService.addAddress(address);
-            else
-                addressService.editAddress(address);
             return "redirect:buildings.html";
     }
 
     @RequestMapping("/deleteAddress/{addressId}")
     public String deleteAddress(@PathVariable("addressId") Integer addressId,Model model) {
         int flag=0;
-//        for(int i=0;i<appUserService.listAppUser().size();i++) {
-//            if(appUserService.getAppUser(appUserService.listAppUser().get(i).getId()).getAppartment().getAddress().getId()==addressService.getAddress(addressId).getId()){
-//                flag=1;}
-//        }
+
 
         if(flag==0) {
             addressService.removeAddress(addressId);

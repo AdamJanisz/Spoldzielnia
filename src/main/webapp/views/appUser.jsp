@@ -7,23 +7,24 @@
 <!DOCTYPE html>
 <html>
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>
+<%-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>--%>
 <head>
-    <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">
-
+   <%-- <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">--%>
 </head>
 
 <body>
 
     <div class="content">
 
-        <div class="img-circular">
+        <div class="img-circular1">
             <div class="content">
 
 
-                        <form:form method="post" action="addAppUser.html" modelAttribute="appUser">
+
+                      <form:form method="post" action="addAppUser.html " modelAttribute="appUser">
+
                             <table>
                                 <tr>
                                     <td><form:hidden path="id"/>
@@ -67,7 +68,7 @@
                                 <td><form:label path="appartment"><spring:message code="label.address" /></form:label> </td>
                                 <td><form:select path="appartment">
                                     <c:forEach items="${appartmentList}" var="appartment">
-                                        <option value="${appartment.id}" >${appartment.appartmentAddress.city}<a>    </a>${appartment.appartmentAddress.street}<a>    </a>${appartment.appartmentAddress.buildingNumber}<a> / </a>${appartment.appartmentNumber}</option>
+                                        <option value="${appartment.id}" ${appartment.id == selectedAppartment ? 'selected="selected"' : ''}>${appartment.appartmentAddress.city}<a>    </a>${appartment.appartmentAddress.street}<a>    </a>${appartment.appartmentAddress.buildingNumber}<a> / </a>${appartment.appartmentNumber}</option>
                                     </c:forEach>
                                 </form:select></td>
 
@@ -130,6 +131,8 @@
                             <td>${appUser.appartment.appartmentAddress.city}<a> </a>${appUser.appartment.appartmentAddress.street}<a> </a>${appUser.appartment.appartmentAddress.buildingNumber}<a>/</a>${appUser.appartment.appartmentNumber}</td>
                             <td><a href="delete/${appUser.id}.html">delete</a></td>
                             <td><a href="appUsers.html?appUserId=${appUser.id}">edit</a></td>
+
+
                         </tr>
                     </c:forEach>
                 </table>

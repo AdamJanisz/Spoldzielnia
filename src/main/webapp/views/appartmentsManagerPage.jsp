@@ -24,7 +24,7 @@
                     <form:form method="post" action="addAppartment.html" modelAttribute="appartment">
                         <table>
                             <c:if test="${not empty deleteError}">
-                            <div class="error">${deleteError}</div>
+                                <div class="error">${deleteError}</div>
                             </c:if>
                             <tr>
                                 <td><form:hidden path="id"/>
@@ -35,12 +35,12 @@
                                     <option value="${address.id}" ${address.id == selectedAddress ? 'selected="selected"' : ''}>${address.city}<a>    </a>${address.street}<a>    </a>${address.buildingNumber}</option>
                                 </c:forEach>
                             </form:select></td>
-                           <%-- <td><form:label path="appUser"><spring:message code="label.appUser" /></form:label> </td>
-                            <td><form:select path="appUser">
-                                <c:forEach items="${appUserList}" var="appUser">
-                                    <option value="${appUser.id}">${appUser.login}</option>
-                                </c:forEach>
-                            </form:select></td>--%>
+                                <%-- <td><form:label path="appUser"><spring:message code="label.appUser" /></form:label> </td>
+                                 <td><form:select path="appUser">
+                                     <c:forEach items="${appUserList}" var="appUser">
+                                         <option value="${appUser.id}">${appUser.login}</option>
+                                     </c:forEach>
+                                 </form:select></td>--%>
                             <tr>
                                 <td><form:label path="appartmentNumber"><spring:message code="label.city"/></form:label></td>
                                 <td><form:input path="appartmentNumber" /></td>

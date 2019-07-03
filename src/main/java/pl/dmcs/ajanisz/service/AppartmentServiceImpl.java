@@ -15,27 +15,27 @@ import java.util.Set;
 public class AppartmentServiceImpl implements  AppartmentService{
 
    @Autowired
-   AppartmentRepository appartmantRepository;
+   AppartmentRepository appartmentRepository;
 
     @Transactional
     public void addAppartment(Appartment appartment) {
-        appartmantRepository.save(appartment);
+        appartmentRepository.save(appartment);
     }
 
     @Transactional
     public Appartment getAppartment(long id) {
-        return  appartmantRepository.findById(id);
+        return  appartmentRepository.findById(id);
     }
 
     @Transactional
     public Set<Appartment> listAppartment() {
         Set<Appartment> appartmentSet= new HashSet<Appartment>();
-        appartmentSet.addAll(appartmantRepository.findAll());
+        appartmentSet.addAll(appartmentRepository.findAll());
         return  appartmentSet;}
 
     @Override
     public void removeAppartment(long id) {
-     appartmantRepository.delete(id);
+     appartmentRepository.delete(id);
     }
 
 }

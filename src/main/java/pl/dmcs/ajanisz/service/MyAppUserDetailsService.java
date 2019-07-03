@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dmcs.ajanisz.domain.AppUserRole;
+import pl.dmcs.ajanisz.domain.Bills;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -33,8 +34,13 @@ public class MyAppUserDetailsService implements UserDetailsService {
 
     private User buildUserForAuthentication(pl.dmcs.ajanisz.domain.AppUser appUser, List<GrantedAuthority> authorities)
     {
-        return new User(appUser.getLogin(),appUser.getPassword(),appUser.isEnabled(), true,true,true,authorities);
+        return new User(appUser.getLogin(),appUser.getPassword(),appUser.isEnabled(),true,true,true,authorities);
     }
+
+//    private Bills buildBillForAuthentication(pl.dmcs.ajanisz.domain.Bills bill, List<GrantedAuthority> authorities)
+//    {
+//        return new Bills(bill.getAppUser(),bill.isConfirmed(), true,true,authorities);
+//    }
 
     private List<GrantedAuthority> buildUserAuthority(Set<AppUserRole> appUserRoles)
     {

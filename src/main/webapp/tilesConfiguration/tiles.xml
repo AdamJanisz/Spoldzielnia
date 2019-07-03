@@ -36,7 +36,13 @@
     <definition name="appartmentsManagerPage" extends="base.definition">
         <put-attribute name="body" value="/views/appartmentsManagerPage.jsp"/>
     </definition>
+    <definition name="billsManagerPage" extends="base.definition">
+        <put-attribute name="body" value="/views/billsManagerPage.jsp"/>
+    </definition>
     <definition name="operationNotAllowed" extends="base.definition">
         <put-attribute name="body" value="/views/operationNotAllowed.jsp"/>
+    </definition>
+    <definition name="appUserRegistration" extends="base.definition">
+        <put-attribute name="body" value="/views/appUserRegistration.jsp"/>
     </definition>
 </tiles-definitions>

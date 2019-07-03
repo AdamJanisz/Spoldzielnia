@@ -9,12 +9,23 @@
 
 
 		<a href="/" class="active"><spring:message code="label.home"/></a>
-	<a href="/appUsers.html">Registration</a>
-<sec:authorize access="hasRole('ADMIN')">
-<a href="/appUserRole.html">Role</a>
-	<a href="/buildings.html">Buildings</a>
-	<a href="/appartments.html">Appartments</a>
-</sec:authorize>
+	<c:if test="${pageContext.request.userPrincipal.name == null}">
+		<a href="/registration.html">Registration</a>
+	</c:if>
+
+	<sec:authorize access="hasRole('ADMIN')">
+		<a href="/appUserRole.html">Role</a>
+		<a href="/appUsers.html">Users</a>
+	</sec:authorize>
+	<sec:authorize access="hasRole('MANAGER')OR hasRole('ADMIN')">
+		<a href="/buildings.html">Buildings</a>
+		<a href="/appartments.html">Appartments</a>
+	</sec:authorize>
+	<sec:authorize access="hasRole('USER')OR hasRole('MANAGER')OR hasRole('ADMIN')">
+		<a href="/bills.html">Bills</a>
+	</sec:authorize>
+
+
 	<a href="javascript:void(0);" class="icon" onclick="myFunction()">
 		<i class="fa fa-bars"></i>
 	</a>

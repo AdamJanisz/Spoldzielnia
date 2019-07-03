@@ -21,7 +21,7 @@ public class AppUserServiceImpl implements AppUserService {
 
 	@Transactional
 	public void addAppUser(AppUser appUser) {
-		appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));
+		//appUser.getAppUserRole().add(appUserRoleRepository.findByRole("ROLE_USER"));
 		//appUser.setAppUserRole(appUserRoleService.getUserRole("ROLE_USER"));
         appUser.setPassword((hashPassword(appUser.getPassword())));
 		appUserRepository.save(appUser);
@@ -33,7 +33,10 @@ public class AppUserServiceImpl implements AppUserService {
 		appUser.setPassword(hashPassword(appUser.getPassword()));
         appUserRepository.save(appUser);
 	}
-private String hashPassword(String password)
+
+
+
+	private String hashPassword(String password)
 {
 	BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 	return passwordEncoder.encode(password);

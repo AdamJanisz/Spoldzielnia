@@ -18,8 +18,8 @@ public class Appartment {
     @ManyToOne
     private Address appartmentAddress;
 
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "appartment")
-    private List<AppUser> appUserList;
+    @OneToOne(cascade = CascadeType.ALL)
+    private AppUser appUser;
 
 
     public long getId() {
@@ -46,11 +46,7 @@ public class Appartment {
         this.appartmentAddress = appartmentAddress;
     }
 
-    public List<AppUser> getAppUserList() {
-        return appUserList;
-    }
+    public AppUser getAppUser() { return appUser; }
 
-    public void setAppUserList(List<AppUser> appUserList) {
-        this.appUserList = appUserList;
-    }
+    public void setAppUser(AppUser appUser) { this.appUser = appUser; }
 }

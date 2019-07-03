@@ -6,8 +6,8 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+@Table(name="appuser",uniqueConstraints = {@UniqueConstraint(columnNames = "appartment_id" )})
 @Entity
-@Table(name="appuser")
 public class AppUser {
 
     private boolean enabled;
@@ -22,14 +22,15 @@ public class AppUser {
     private String email;
     private String telephone;
 
+
    // @ManyToOne
    // private Address address;
    // private Building building;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private Bills bills;
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
+    private Set<Bills> billsList;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne
     private Appartment appartment;
 
 
@@ -124,11 +125,9 @@ private Set<AppUserRole> appUserRole = new HashSet<AppUserRole>(0);
 //        this.address = address;
 //    }
 
-    public Bills getBills() {return bills; }
 
-    public void setBills(Bills bills) { this.bills = bills; }
+    public Set<Bills> getBillsList() { return billsList; }
 
-
-
+    public void setBillsList(Set<Bills> billsList) { this.billsList = billsList; }
 }
 

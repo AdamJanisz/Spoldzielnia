@@ -33,11 +33,33 @@
                                 <td><form:label path="buildingNumber"><spring:message code="label.telephone"/></form:label></td>
                                 <td><form:input path="buildingNumber" /></td>
                             </tr>
+                            <tr>
+                                <td><form:label path="coldWaterPrice"><spring:message code="label.city"/></form:label></td>
+                                <td><form:input path="coldWaterPrice" /></td>
+                            </tr>
+                            <tr>
+                                <td><form:label path="hotWaterPrice"><spring:message code="label.street"/></form:label></td>
+                                <td><form:input path="hotWaterPrice" /></td>
+                            </tr>
+                            <tr>
+                                <td><form:label path="electricityPrice"><spring:message code="label.telephone"/></form:label></td>
+                                <td><form:input path="electricityPrice" /></td>
+                            </tr>
+                            <tr>
+                                <td><form:label path="sewagePrice"><spring:message code="label.street"/></form:label></td>
+                                <td><form:input path="sewagePrice" /></td>
+                            </tr>
+                            <tr>
+                                <td><form:label path="repairFundPrice"><spring:message code="label.telephone"/></form:label></td>
+                                <td><form:input path="repairFundPrice" /></td>
+                            </tr>
 
 
                             <tr>
                                 <td colspan="2">
-                                    <input type="submit" value="<spring:message code="label.addBuilding"/>"/>
+                                    <c:if test="${address.id==0}">
+                                        <input type="submit" value="<spring:message code="label.addBuilding"/>"/>
+                                    </c:if>
                                     <c:if test="${address.id!=0}">
                                         <input type="submit" value="edytuj"/>
                                     </c:if>
