@@ -2,7 +2,6 @@ package pl.dmcs.ajanisz.domain;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,16 +15,12 @@ public class AppUser {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
-    @Column(name="firstName", nullable=false)
+
     private String firstName;
     private String lastName;
     private String email;
     private String telephone;
 
-
-   // @ManyToOne
-   // private Address address;
-   // private Building building;
 
     @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL,mappedBy = "appUser")
     private Set<Bills> billsList;

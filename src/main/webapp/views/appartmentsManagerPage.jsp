@@ -11,7 +11,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+
 </head>
 <body>
 <div class="content">
@@ -42,13 +42,13 @@
                                      </c:forEach>
                                  </form:select></td>--%>
                             <tr>
-                                <td><form:label path="appartmentNumber"><spring:message code="label.city"/></form:label></td>
+                                <td><form:label path="appartmentNumber">appartment number</form:label></td>
                                 <td><form:input path="appartmentNumber" /></td>
                             </tr>
 
                             <tr>
                                 <td colspan="2">
-                                    <input type="submit" value="<spring:message code="label.addAppUser"/>"/>
+                                    <input type="submit" value="add Appartment"/>
                                 </td>
                             </tr>
 
@@ -64,8 +64,9 @@
     <c:if  test="${!empty appartmentList}">
         <table class="data">
             <tr>
-                <th><spring:message code="label.street"/></th>
-                <th><spring:message code="label.city"/></th>
+                <th>appartment No.</th>
+                <th>city</th>
+                <th>street</th>
                 <th></th>
                 <th></th>
 
@@ -74,6 +75,7 @@
                 <tr>
                     <td>${appartment.appartmentNumber} </td>
                     <td>${appartment.appartmentAddress.city} </td>
+                    <td>${appartment.appartmentAddress.street} </td>
                     <td><a href="deleteAppartment/${appartment.id}.html">delete</a></td>
                     <td><a href="safeDeleteAppartment/${appartment.id}.html">safe removal</a></td>
                 </tr>

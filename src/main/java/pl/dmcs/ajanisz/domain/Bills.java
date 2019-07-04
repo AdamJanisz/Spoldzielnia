@@ -1,6 +1,6 @@
 package pl.dmcs.ajanisz.domain;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -19,11 +19,12 @@ public class Bills {
     private int sewage;
     private int repairFund;
     private int totalAmount;
-    //@DateTimeFormat
     private String date;
 
+    @JsonIgnore
     @ManyToOne
     private AppUser appUser;
+
 
 
     public boolean isConfirmed() { return confirmed; }

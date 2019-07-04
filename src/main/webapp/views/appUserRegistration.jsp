@@ -12,8 +12,7 @@
 <link href='https://fonts.googleapis.com/css?family=Bree Serif' rel='stylesheet'>--%>
 <head>
     <%-- <link href="<c:url value="/resources/css/custom.css" />" rel="stylesheet">--%>
-        <script src="https://www.google.com/recaptcha/api.js"></script>
-
+        <script src="http://www.google.com/recaptcha/api.js"></script>
 </head>
 
 <body>
@@ -43,21 +42,26 @@
                     <td><form:label path="enabled"><spring:message code="label.enabled"/></form:label></td>
                     <td><form:checkbox path="enabled" /></td>
 
+                </tr>
                 <tr>
                     <td><form:label path="firstName"><spring:message code="label.firstName"/></form:label></td>
                     <td><form:input path="firstName" /></td>
+                    <td><form:errors path="firstName"/></td>
                 </tr>
                 <tr>
                     <td><form:label path="lastName"><spring:message code="label.lastName"/></form:label></td>
                     <td><form:input path="lastName" /></td>
+                    <td><form:errors path="lastName"/></td>
                 </tr>
                 <tr>
                     <td><form:label path="email"><spring:message code="label.email"/></form:label></td>
                     <td><form:input path="email" /></td>
+                    <td><form:errors path="email"/></td>
                 </tr>
                 <tr>
                     <td><form:label path="telephone"><spring:message code="label.telephone"/></form:label></td>
                     <td><form:input path="telephone" /></td>
+                    <td><form:errors path="telephone"/></td>
                 </tr>
 
                 <td><form:label path="appartment"><spring:message code="label.address" /></form:label> </td>
@@ -66,14 +70,15 @@
                         <option value="${appartment.id}" ${appartment.id == selectedAppartment ? 'selected="selected"' : ''}>${appartment.appartmentAddress.city}<a>    </a>${appartment.appartmentAddress.street}<a>    </a>${appartment.appartmentAddress.buildingNumber}<a> / </a>${appartment.appartmentNumber}</option>
                     </c:forEach>
                 </form:select></td>
+
                 <tr>
                     <td colspan="3">
-                        <div class="g-recaptcha" data-sitekey="6LfbzasUAAAAAHt7AEYbEMDMvvgHX3AVBJKYIDwr"></div>
+                        <div class="g-recaptcha" data-sitekey="6LfP_qsUAAAAAHauI7TMQrAuvSl1hxhMn1dOKshE"></div>
                     </td>
                 </tr>
 
 
-            </tr>
+
                 <tr>
                     <td colspan="2">
 

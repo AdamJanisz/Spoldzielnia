@@ -3,13 +3,16 @@ package pl.dmcs.ajanisz.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestUtils;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import pl.dmcs.ajanisz.domain.Appartment;
 import pl.dmcs.ajanisz.service.AddressService;
 import pl.dmcs.ajanisz.service.AppUserService;
 import pl.dmcs.ajanisz.service.AppartmentService;
+import pl.dmcs.ajanisz.service.ReCaptchaService;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +27,8 @@ public class AppartmentController {
         private AddressService addressService;
         @Autowired
         private AppUserService appUserService;
+        @Autowired
+        private ReCaptchaService reCaptchaService;
 
 
         @RequestMapping(value="/appartments")
@@ -45,11 +50,11 @@ public class AppartmentController {
 
 
         @RequestMapping(value = "/addAppartment", method = RequestMethod.POST)
-        public String addAppartment(@ModelAttribute("appartment") Appartment appartment, Model model)
+        public String addAppartment(@ModelAttribute("appartment") Appartment appartment, Model model, HttpServletRequest request)
         {
 
                         //   appUser.setAppUserRole(appUserRoleService.getUserRole("ROLE_USER"));
-                        appartmentService.addAppartment(appartment);
+                   appartmentService.addAppartment(appartment);
 
 
 

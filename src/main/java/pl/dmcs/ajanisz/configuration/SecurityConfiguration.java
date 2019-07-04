@@ -8,7 +8,6 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
@@ -42,6 +41,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/appUserRole*").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/buildings*").access("hasRole('ROLE_ADMIN')or hasRole('ROLE_MANAGER')")
+                .antMatchers("/buildingsManager*").access("hasRole('ROLE_ADMIN')")
                 .antMatchers("/appUsers*").access("hasRole('ROLE_ADMIN')")
                 .and().formLogin().loginPage("/login").permitAll()
                 .usernameParameter("login").passwordParameter("password")

@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import pl.dmcs.ajanisz.dao.AppUserRepository;
 import pl.dmcs.ajanisz.dao.AppUserRoleRepository;
 import pl.dmcs.ajanisz.domain.AppUser;
+import pl.dmcs.ajanisz.domain.AppUserRole;
 
 import java.util.List;
 
@@ -60,6 +61,11 @@ public class AppUserServiceImpl implements AppUserService {
 	@Transactional
 	public AppUser findByLogin(String login) {
 		return appUserRepository.findByLogin(login);
+	}
+
+	@Transactional
+	public List<AppUser> findByRole(AppUserRole role) {
+		return appUserRepository.findAllByAppUserRole(role);
 	}
 
 

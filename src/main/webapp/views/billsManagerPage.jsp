@@ -9,6 +9,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <html>
 <head>
 
@@ -27,28 +28,30 @@
                                 <td><form:hidden path="id"/>
                             </tr>
                             <tr>
-                                <td><form:label path="electricity"><spring:message code="label.city"/></form:label></td>
+                                <td><form:label path="electricity">electricity</form:label></td>
                                 <td><form:input path="electricity" /></td>
                             </tr>
                             <tr>
-                                <td><form:label path="hotWater"><spring:message code="label.street"/></form:label></td>
+                                <td><form:label path="hotWater">hot water</form:label></td>
                                 <td><form:input path="hotWater" /></td>
                             </tr>
                             <tr>
-                                <td><form:label path="coldWater"><spring:message code="label.telephone"/></form:label></td>
+                                <td><form:label path="coldWater">cold water</form:label></td>
                                 <td><form:input path="coldWater" /></td>
                             </tr>
                             <tr>
-                                <td><form:label path="sewage"><spring:message code="label.telephone"/></form:label></td>
+                                <td><form:label path="sewage">sewage</form:label></td>
                                 <td><form:input path="sewage" /></td>
                             </tr>
                             <tr>
                                 <input type="hidden" name="date" value="${serverTime}">
                             </tr>
                             <tr>
-                                <td><form:label path="repairFund"><spring:message code="label.telephone"/></form:label></td>
+                                <td><form:label path="repairFund">repair fund</form:label></td>
                                 <td><form:input path="repairFund" /></td>
                             </tr>
+
+
                             <c:if test="${currentUser.id!=0}">
                                 <tr>
                                         <input type="hidden" id="appUser" name="appUser" value="${currentUser.id}">
@@ -80,13 +83,13 @@
 <c:if  test="${!empty userBillsList}">
     <table class="data">
         <tr>
-            <th><spring:message code="label.city"/></th>
-            <th><spring:message code="label.city"/></th>
-            <th><spring:message code="label.street"/></th>
-            <th><spring:message code="label.city"/></th>
-            <th><spring:message code="label.street"/></th>
-            <th><spring:message code="label.city"/></th>
-            <th><spring:message code="label.street"/></th>
+            <th>date</th>
+            <th>electricity</th>
+            <th>cold</th>
+            <th>hot</th>
+            <th>sewage</th>
+            <th>sum</th>
+            <th>&nbsp;</th>
             <th>&nbsp;</th>
         </tr>
         <c:forEach items="${userBillsList}" var="bill">
@@ -98,7 +101,13 @@
                 <td>${bill.sewage}</td>
                 <td>${bill.totalAmount} </td>
                 <td><a href="bills.html?billsId=${bill.id}">edit</a></td>
+                <sec:authorize access="hasRole('ADMIN') OR hasRole('MANAGER')">
+                    <td><a href="/accept/${bill.id}">accept</a></td>
+                </sec:authorize>
+                <c:if  test="${bill.confirmed}">
                 <td><a href="generatePdf-${bill.id}">pdf</a></td>
+                <td><a href="/billsRest/${bill.id}">rest</a></td>
+                </c:if>
 
             </tr>
         </c:forEach>

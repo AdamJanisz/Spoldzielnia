@@ -2,7 +2,6 @@ package pl.dmcs.ajanisz.service;
 
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.stereotype.Service;
 import pl.dmcs.ajanisz.domain.Address;
 
 import java.util.List;
@@ -14,10 +13,11 @@ public interface AddressService {
     public void addAddress(Address address);
 
     public List<Address> listAddress();
-    @PreAuthorize("hasRole('ROLE_ADMIN') OR (#address.owner.login == principal.username)")
+    @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_MANAGER')") //(#address.owner.login == principal.username)")
     public void editAddress(Address address);
-    @PreAuthorize("hasRole('ROLE_ADMIN') OR (#address.owner.login == principal.username)")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public void removeAddress(long id);
     public Address getAddress(long id);
+    public List<Address> listManagerAddress(long id);
 
 }

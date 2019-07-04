@@ -17,8 +17,13 @@
 		<a href="/appUserRole.html">Role</a>
 		<a href="/appUsers.html">Users</a>
 	</sec:authorize>
+<sec:authorize access="hasRole('ADMIN')">
+	<a href="/buildings.html">Buildings</a>
+</sec:authorize>
+	<sec:authorize access="hasRole('MANAGER')">
+		<a href="/Mybuildings.html">MyBuildings</a>
+	</sec:authorize>
 	<sec:authorize access="hasRole('MANAGER')OR hasRole('ADMIN')">
-		<a href="/buildings.html">Buildings</a>
 		<a href="/appartments.html">Appartments</a>
 	</sec:authorize>
 	<sec:authorize access="hasRole('USER')OR hasRole('MANAGER')OR hasRole('ADMIN')">

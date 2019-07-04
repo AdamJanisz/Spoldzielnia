@@ -45,4 +45,10 @@
     <definition name="appUserRegistration" extends="base.definition">
         <put-attribute name="body" value="/views/appUserRegistration.jsp"/>
     </definition>
+    <definition name="buildingOwners" extends="base.definition">
+        <put-attribute name="body" value="/views/buildingOwners.jsp"/>
+    </definition>
+    <definition name="MybuildingPage" extends="base.definition">
+        <put-attribute name="body" value="/views/MybuildingPage.jsp"/>
+    </definition>
 </tiles-definitions>

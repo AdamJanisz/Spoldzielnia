@@ -1,27 +1,21 @@
 package pl.dmcs.ajanisz.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import pl.dmcs.ajanisz.dao.AppartmentRepository;
+import pl.dmcs.ajanisz.domain.Address;
 import pl.dmcs.ajanisz.domain.AppUser;
 import pl.dmcs.ajanisz.domain.Appartment;
-import pl.dmcs.ajanisz.domain.Bills;
 import pl.dmcs.ajanisz.service.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
 
 @Controller
@@ -47,9 +41,9 @@ public class AppUserController {
     ReCaptchaService reCaptchaService;
 
 
-    @RequestMapping(value = "/registration")
-    public String appUserRegistration(Model model,HttpServletRequest request){
 
+    @RequestMapping(value = "/registration")
+    public String appUserRegistration(Model model){
 
         model.addAttribute("appUser",new AppUser());
         model.addAttribute("appartmentList",appartmentService.listAppartment());
@@ -57,22 +51,20 @@ public class AppUserController {
         return "appUserRegistration";
     }
     @RequestMapping(value = "/registerAppUser", method = RequestMethod.POST)
-    public String registerAppUser(@ModelAttribute("appUser") AppUser appUser, Model model, HttpServletRequest request) {
+    public String registerAppUser(@ModelAttribute("appUser") AppUser appUser, HttpServletRequest request) {
 
 
-
-        if(reCaptchaService.verify(request.getParameter("g-rechaptcha-response"))){
+        if(reCaptchaService.verify(request.getParameter("g-recaptcha-response"))){
             appUser.setAppUserRole(appUserRoleService.getUserRole("ROLE_USER"));
             appUserService.addAppUser(appUser);
-
             appUser.getAppartment().setAppUser(appUser);
             appartmentRepository.save(appUser.getAppartment());
+            return "hello";
 
-            return "redirect:registration.html";
         }
-        appUser.getAppUserRole().clear();
+        //appUser.getAppUserRole().clear();
 
-        return "hello";
+        return "redirect:registration.html";
     }
 
     @RequestMapping(value = "/appUsers")
@@ -109,9 +101,9 @@ public class AppUserController {
 
     }
     @RequestMapping(value = "/addAppUser", method = RequestMethod.POST)
-    public String addAppUser(@ModelAttribute("appUser") AppUser appUser, Model model) {
+    public String addAppUser(@ModelAttribute("appUser") AppUser appUser, Model model, BindingResult result) {
 
-        if (1==1) {
+//        if (result.getErrorCount()==0) {
             if (appUser.getId()==0) {
                 appUser.setAppUserRole(appUserRoleService.getUserRole("ROLE_USER"));
                 appUserService.addAppUser(appUser);
@@ -125,17 +117,24 @@ public class AppUserController {
             appUser.getAppartment().setAppUser(appUser);
             appartmentRepository.save(appUser.getAppartment());
             return "redirect:appUsers.html";
-        }
-        appUser.getAppUserRole().clear();
-
-        model.addAttribute("appUserList", appUserService.listAppUser());
-        model.addAttribute("addressesList", addressService.listAddress());
-        model.addAttribute("appUserRoleList",appUserRoleService.listAppUserRole());
-        return "appUser";
+//        }
+//        appUser.getAppUserRole().clear();
+//
+//        model.addAttribute("appUserList", appUserService.listAppUser());
+//        model.addAttribute("addressesList", addressService.listAddress());
+//        model.addAttribute("appUserRoleList",appUserRoleService.listAppUserRole());
+//        return "appUser";
     }
 
     @RequestMapping("/delete/{appUserId}")
     public String deleteUser(@PathVariable("appUserId") Long appUserId) {
+        for (Address adres:addressService.listAddress()) {
+            if(adres.getOwner().getId()==appUserId){
+                adres.setOwner(null);
+                addressService.editAddress(adres);
+            }
+        }
+
         Appartment flat=appartmentService.getAppartment(appUserService.getAppUser(appUserId).getAppartment().getId());
         flat.setAppUser(null);
         appartmentRepository.save(flat);

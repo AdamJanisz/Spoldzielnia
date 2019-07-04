@@ -4,11 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.dmcs.ajanisz.dao.BillsRepository;
-import pl.dmcs.ajanisz.domain.AppUser;
 import pl.dmcs.ajanisz.domain.Bills;
 
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 @Transactional
 @Service
@@ -38,6 +38,23 @@ public class BillsServiceImpl implements BillsService{
         bills.addAll(Arrays.asList(array));
         return bills;
 
+    }
+
+    @Transactional
+    public List<Bills> listManagerBills(long id) {
+        List<Bills> bills=listBills();
+        List<Bills> userBills=new ArrayList<Bills>();
+
+        for(int i=0;i<bills.size();i++){
+            if(bills.get(i).getAppUser().getAppartment().getAppartmentAddress().getOwner().getId()==id){
+                userBills.add(bills.get(i));
+            }
+        }
+        bills.clear();
+        Bills[] array = userBills.toArray(new Bills[0]);
+        array=sortujRosnaco(array);
+        bills.addAll(Arrays.asList(array));
+        return bills;
     }
 
     @Transactional

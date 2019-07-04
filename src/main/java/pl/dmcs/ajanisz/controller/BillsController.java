@@ -1,36 +1,29 @@
 package pl.dmcs.ajanisz.controller;
 
-import org.apache.tiles.locale.LocaleResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import pl.dmcs.ajanisz.dao.AppUserRepository;
-import pl.dmcs.ajanisz.dao.BillsRepository;
+import pl.dmcs.ajanisz.dao.AppUserRoleRepository;
 import pl.dmcs.ajanisz.domain.AppUser;
 import pl.dmcs.ajanisz.domain.Bills;
-import pl.dmcs.ajanisz.service.AddressService;
 import pl.dmcs.ajanisz.service.AppUserService;
 import pl.dmcs.ajanisz.service.BillsService;
-//import sun.util.resources.LocaleData;
 
 import javax.servlet.http.HttpServletRequest;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
+
+//import sun.util.resources.LocaleData;
 
 @EnableScheduling
 @Controller
@@ -44,6 +37,8 @@ public class BillsController {
     AppUserService appUserService;
     @Autowired
     AppUserRepository appUserRepository;
+    @Autowired
+    AppUserRoleRepository appUserRoleRepository;
 
 
     @Scheduled(cron="0 */1 * * * *")
@@ -94,16 +89,26 @@ public class BillsController {
             model.addAttribute("serverTime",billsService.getBills(billId).getDate());
             model.addAttribute("currentUser", billsService.getBills(billId).getAppUser());
         }
+        if(currentUser.getAppUserRole().contains(appUserRoleRepository.findByRole("ROLE_MANAGER")))
+            model.addAttribute("userBillsList", billsService.listManagerBills(currentUser.getId()));
+        else
             model.addAttribute("userBillsList", billsService.listUserBills(currentUser.getId()));
 
         return "billsManagerPage";
     }
 
     @RequestMapping(value = "/editBill", method = RequestMethod.POST)
-    public String addBill(Authentication authentication,@ModelAttribute("bill") Bills bill, Model model)
+    public String addBill(@ModelAttribute("bill") Bills bill, Model model)
     {
         billsService.editBills(billsService.calculateTotalAmount(bill));
         return "redirect:bills.html";
+    }
+    @RequestMapping("/accept/{billId}")
+    public String acceptBill(@PathVariable("billId") long billId) {
+        Bills bill = billsService.getBills(billId);
+        bill.setConfirmed(true);
+        billsService.editBills(bill);
+        return "redirect:/bills";
     }
 
 }

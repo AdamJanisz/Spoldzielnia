@@ -1,8 +1,8 @@
 package pl.dmcs.ajanisz.domain;
 
-import org.hibernate.engine.internal.Cascade;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Table(name="address",uniqueConstraints = {@UniqueConstraint(columnNames = { "city", "street","buildingNumber" } )})
@@ -13,8 +13,13 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.AUTO)
     long id;
 
+    @NotNull
+    @Column(name="city",nullable=false)
+    @Size(min=2, max=30,message = "{error.size.firstName}")
     private String city;
+    @NotNull
     private String street;
+    @NotNull
     private String buildingNumber;
 
     private int electricityPrice;

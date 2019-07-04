@@ -15,7 +15,7 @@ import java.net.URL;
 @Service
 public class ReCaptchaServiceImpl implements ReCaptchaService {
     private static final String URL = "https://www.google.com/recaptcha/api/siteverify";
-    private static final String GOOGLE_KEY = "6LfbzasUAAAAAHt7AEYbEMDMvvgHX3AVBJKYIDwr";
+    private static final String GOOGLE_KEY = "6LfP_qsUAAAAAPDhPlxW2ZGqhXpngExo2jpmY4lw";
 
     @Override
     public boolean verify(String captcha) {
